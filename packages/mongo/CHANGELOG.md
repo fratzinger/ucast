@@ -2,6 +2,57 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0](https://github.com/fratzinger/ucast/compare/@ucast/mongo@2.4.3...@ucast/mongo@3.0.0) (2026-02-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **parser:** `MongoQueryParser.parse` returns AST with operator names that doesn't have `$` prefix. This was done to make it easier import/re-export parser instructions and operator interpreters from single package
+
+### Features
+
+* **esm:** adds ESM support via dual loading in package.json for latest Node.js version ([c730f95](https://github.com/fratzinger/ucast/commit/c730f9598a4c62589c612403c0ac59ba4aa1600e)), closes [#10](https://github.com/fratzinger/ucast/issues/10)
+* **mongo:** adds basic implementation for mongo parser and js interpreter ([a8f7271](https://github.com/fratzinger/ucast/commit/a8f7271fc893491755e5c7fb522ed42be992e7b1))
+* **mongo:** adds built-in `$all` instruction for MongoQueryParser ([6d3f224](https://github.com/fratzinger/ucast/commit/6d3f224bcba1ef6b875f992752f08d01116bbf9b))
+* **mongo:** stabilize mongo package ([7d77768](https://github.com/fratzinger/ucast/commit/7d7776874be3050026b53ee3b61c3361a89d1b21))
+* **mongo:** updates mongo parser to support ValueParsingInstruction ([b918c34](https://github.com/fratzinger/ucast/commit/b918c34224a5b60f3f1aa16197587f279b0e3e3a))
+* **parser:** adds possibility to set `parse` function ([8a1e388](https://github.com/fratzinger/ucast/commit/8a1e388fe1c5722ae322b783101f066d763dfde5))
+* **parser:** extracts `ObjectQueryParser` out of `MongoQueryParser` into reusable piece ([38941dd](https://github.com/fratzinger/ucast/commit/38941dd003dfb0ac9d9f7c867d49b0bbd0b5e716))
+* **types:** exports CustomOperators type and adds `BuildMongoQuery` type ([5ebff17](https://github.com/fratzinger/ucast/commit/5ebff1709a448d8683650b26ffff5b7e472c6ac3))
+
+
+### Bug Fixes
+
+* adds typings to ESM exports in package.json ([1ffb703](https://github.com/fratzinger/ucast/commit/1ffb7033a6d70ee4eb5f9d3178bcb4df37da835e))
+* **docs:** removes `$` sign from README examples ([0dc924a](https://github.com/fratzinger/ucast/commit/0dc924af72abfefa41ebeac107f1bc070ad796c7))
+* **license:** changes mistakenly set MIT license to the correct one - Apache 2.0 ([197363c](https://github.com/fratzinger/ucast/commit/197363c321392c742d31b7e1e024d88c0499ce73))
+* marks packages as commonjs by default with a separate ESM entry ([a3f4896](https://github.com/fratzinger/ucast/commit/a3f48961a93b5951cb92d9954297cd12754d3ff1))
+* **package:** fixes deps ranges ([c2de9c1](https://github.com/fratzinger/ucast/commit/c2de9c1b2d6ad85050f4eeb2635c6cb377200013))
+* **parser:** ensure parser removes only `$` sign from instructions name ([7fda14e](https://github.com/fratzinger/ucast/commit/7fda14e5b2f0c7a3120c1b4be22099c3aceff410))
+* **parser:** prevents mangling of `parseField` and `parseFieldOperators` methods of `ObjectQueryParser` ([3b4734b](https://github.com/fratzinger/ucast/commit/3b4734b8ac46514aa46855f169e48708d5a9a4b3))
+* **parser:** updates @ucast/core and uses `buildAnd` instead of `and` ([154c7a6](https://github.com/fratzinger/ucast/commit/154c7a6ff86c3a193592f642416030d0d78ea8ea))
+* **README:** updates outdated docs ([550a08e](https://github.com/fratzinger/ucast/commit/550a08ec1b0d0cd71b9ef432757cbc80aad88965))
+* remove type commonjs from package.json to improve webpack compat ([#28](https://github.com/fratzinger/ucast/issues/28)) ([6b1ad28](https://github.com/fratzinger/ucast/commit/6b1ad289d7b4f9945f08f29efd952069efd6c8c9))
+* **types:** ensure `MongoQuery<any>` returns proper types and can be used with primitive values ([d138ee5](https://github.com/fratzinger/ucast/commit/d138ee565bc54d623a283243dc12fc9c930dd2af))
+* **types:** exports `RegExpFieldContext`, so ts allows to use typeof on object of instructions ([9a4580d](https://github.com/fratzinger/ucast/commit/9a4580d054a6988fc41732de96d108ddb55b269f))
+* updates metadata in package.json ([2fa89f5](https://github.com/fratzinger/ucast/commit/2fa89f573eeb033c657b7c54b4640a856859f766))
+
+
+### Performance Improvements
+
+* **build:** adds es6cjs format which works few times faster then umd in node env ([4adba3b](https://github.com/fratzinger/ucast/commit/4adba3bbf85afe95abfbcee0e36b5edc9d09396f))
+* **parser:** replaces `Object.keys().forEach` with `Object.keys() + for(..)` ([003661d](https://github.com/fratzinger/ucast/commit/003661da2170243a6bd95233df397eb7c9c4d70a))
+
+
+### Reverts
+
+* **package:** reverts root package.json to fix CI ([277deb5](https://github.com/fratzinger/ucast/commit/277deb561bc2a74a2c98170608805ded57802d7d))
+
+
+### Code Refactoring
+
+* **parser:** removes `$` from operator name in resulting AST ([e589a9c](https://github.com/fratzinger/ucast/commit/e589a9ce577bc191f48e481fc8aebe5b1164783b))
+
 ## [2.4.3](https://github.com/stalniy/ucast/compare/@ucast/mongo@2.4.2...@ucast/mongo@2.4.3) (2023-02-15)
 
 

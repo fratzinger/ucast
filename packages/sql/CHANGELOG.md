@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.2.0](https://github.com/fratzinger/ucast/compare/@ucast/sql@0.1.0...@ucast/sql@0.2.0) (2026-02-04)
+
+
+### Features
+
+* **esm:** adds ESM support via dual loading in package.json for latest Node.js version ([c730f95](https://github.com/fratzinger/ucast/commit/c730f9598a4c62589c612403c0ac59ba4aa1600e)), closes [#10](https://github.com/fratzinger/ucast/issues/10)
+* **interpreter:** adds pure SQL interpreter ([de71fdb](https://github.com/fratzinger/ucast/commit/de71fdb27288750772ccc588ecb3f84c2734b173))
+* merges @ucast/sql alpha into main stream ([#68](https://github.com/fratzinger/ucast/issues/68)) ([a058b3b](https://github.com/fratzinger/ucast/commit/a058b3ba6fcea17e5d02dbe76b9fe1c6b8950624))
+* **sequelize:** adds integration with sequelize ([1710361](https://github.com/fratzinger/ucast/commit/17103618a21046352caf6da1b0589e338aaacb46))
+* **sql:** adds integration for typeorm ([0524848](https://github.com/fratzinger/ucast/commit/0524848314824451a49ccc3b6fa5b0b3940f8c2e))
+* **sql:** adds sub-module for mikro-orm ([d477bed](https://github.com/fratzinger/ucast/commit/d477bed59ea72f7c402023267c2116655f525f8e))
+
+
+### Bug Fixes
+
+* adds typings to ESM exports in package.json ([1ffb703](https://github.com/fratzinger/ucast/commit/1ffb7033a6d70ee4eb5f9d3178bcb4df37da835e))
+* updates metadata in package.json ([2fa89f5](https://github.com/fratzinger/ucast/commit/2fa89f573eeb033c657b7c54b4640a856859f766))
+
 ## [0.1.0](https://github.com/stalniy/ucast/compare/@ucast/sql@0.0.1...@ucast/sql@0.1.0) (2026-02-04)
 
 
