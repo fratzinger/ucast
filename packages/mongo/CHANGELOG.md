@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file.
 
+## [4.0.0](https://github.com/fratzinger/ucast/compare/@ucast/mongo@3.0.0...@ucast/mongo@4.0.0) (2026-04-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* supports ES2020+ only
+* **parser:** `MongoQueryParser.parse` returns AST with operator names that doesn't have `$` prefix. This was done to make it easier import/re-export parser instructions and operator interpreters from single package
+
+### Features
+
+* **esm:** adds ESM support via dual loading in package.json for latest Node.js version ([c730f95](https://github.com/fratzinger/ucast/commit/c730f9598a4c62589c612403c0ac59ba4aa1600e)), closes [#10](https://github.com/fratzinger/ucast/issues/10)
+* **mongo:** adds basic implementation for mongo parser and js interpreter ([a8f7271](https://github.com/fratzinger/ucast/commit/a8f7271fc893491755e5c7fb522ed42be992e7b1))
+* **mongo:** adds built-in `$all` instruction for MongoQueryParser ([6d3f224](https://github.com/fratzinger/ucast/commit/6d3f224bcba1ef6b875f992752f08d01116bbf9b))
+* **mongo:** stabilize mongo package ([7d77768](https://github.com/fratzinger/ucast/commit/7d7776874be3050026b53ee3b61c3361a89d1b21))
+* **mongo:** updates mongo parser to support ValueParsingInstruction ([b918c34](https://github.com/fratzinger/ucast/commit/b918c34224a5b60f3f1aa16197587f279b0e3e3a))
+* **parser:** adds possibility to set `parse` function ([8a1e388](https://github.com/fratzinger/ucast/commit/8a1e388fe1c5722ae322b783101f066d763dfde5))
+* **parser:** extracts `ObjectQueryParser` out of `MongoQueryParser` into reusable piece ([38941dd](https://github.com/fratzinger/ucast/commit/38941dd003dfb0ac9d9f7c867d49b0bbd0b5e716))
+* **types:** exports CustomOperators type and adds `BuildMongoQuery` type ([5ebff17](https://github.com/fratzinger/ucast/commit/5ebff1709a448d8683650b26ffff5b7e472c6ac3))
+
+
+### Bug Fixes
+
+* adds typings to ESM exports in package.json ([1ffb703](https://github.com/fratzinger/ucast/commit/1ffb7033a6d70ee4eb5f9d3178bcb4df37da835e))
+* adjusts MongoQuery type to reflect mongodb capabilities and adjusts interpreters as well ([#81](https://github.com/fratzinger/ucast/issues/81)) ([131e893](https://github.com/fratzinger/ucast/commit/131e893d578af4a160709fc64ed031540784b663))
+* **docs:** removes `$` sign from README examples ([0dc924a](https://github.com/fratzinger/ucast/commit/0dc924af72abfefa41ebeac107f1bc070ad796c7))
+* improves validation of compound instruction parsing for mongodb ([#82](https://github.com/fratzinger/ucast/issues/82)) ([f59c7e6](https://github.com/fratzinger/ucast/commit/f59c7e6fe7d4a90f22905e5d72f00fd06c602537))
+* **license:** changes mistakenly set MIT license to the correct one - Apache 2.0 ([197363c](https://github.com/fratzinger/ucast/commit/197363c321392c742d31b7e1e024d88c0499ce73))
+* marks packages as commonjs by default with a separate ESM entry ([a3f4896](https://github.com/fratzinger/ucast/commit/a3f48961a93b5951cb92d9954297cd12754d3ff1))
+* **package:** fixes deps ranges ([c2de9c1](https://github.com/fratzinger/ucast/commit/c2de9c1b2d6ad85050f4eeb2635c6cb377200013))
+* **parser:** ensure parser removes only `$` sign from instructions name ([7fda14e](https://github.com/fratzinger/ucast/commit/7fda14e5b2f0c7a3120c1b4be22099c3aceff410))
+* **parser:** prevents mangling of `parseField` and `parseFieldOperators` methods of `ObjectQueryParser` ([3b4734b](https://github.com/fratzinger/ucast/commit/3b4734b8ac46514aa46855f169e48708d5a9a4b3))
+* **parser:** updates @ucast/core and uses `buildAnd` instead of `and` ([154c7a6](https://github.com/fratzinger/ucast/commit/154c7a6ff86c3a193592f642416030d0d78ea8ea))
+* **README:** updates outdated docs ([550a08e](https://github.com/fratzinger/ucast/commit/550a08ec1b0d0cd71b9ef432757cbc80aad88965))
+* remove type commonjs from package.json to improve webpack compat ([#28](https://github.com/fratzinger/ucast/issues/28)) ([6b1ad28](https://github.com/fratzinger/ucast/commit/6b1ad289d7b4f9945f08f29efd952069efd6c8c9))
+* **types:** ensure `MongoQuery<any>` returns proper types and can be used with primitive values ([d138ee5](https://github.com/fratzinger/ucast/commit/d138ee565bc54d623a283243dc12fc9c930dd2af))
+* **types:** exports `RegExpFieldContext`, so ts allows to use typeof on object of instructions ([9a4580d](https://github.com/fratzinger/ucast/commit/9a4580d054a6988fc41732de96d108ddb55b269f))
+* updates metadata in package.json ([2fa89f5](https://github.com/fratzinger/ucast/commit/2fa89f573eeb033c657b7c54b4640a856859f766))
+
+
+### Code Refactoring
+
+* drop ES5M and UMD builds ([#77](https://github.com/fratzinger/ucast/issues/77)) ([14b8279](https://github.com/fratzinger/ucast/commit/14b8279fa0dbd25d761ce7990afe692ae5bdbb95))
+* migrates to latest eslint/typescript ([#61](https://github.com/fratzinger/ucast/issues/61)) ([405bcca](https://github.com/fratzinger/ucast/commit/405bcca1dfc0cc4b8c3fe349e7110ce767633b47))
+* **parser:** removes `$` from operator name in resulting AST ([e589a9c](https://github.com/fratzinger/ucast/commit/e589a9ce577bc191f48e481fc8aebe5b1164783b))
+* **types:** utilizes Comparable type in MongoQuery ([64143e4](https://github.com/fratzinger/ucast/commit/64143e4aa0717aef42041a8b1cdb365a0926b61d))
+
 ## [3.0.0](https://github.com/stalniy/ucast/compare/@ucast/mongo@2.4.4...@ucast/mongo@3.0.0) (2026-04-24)
 
 
