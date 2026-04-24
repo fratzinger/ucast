@@ -2,6 +2,56 @@
 
 All notable changes to this project will be documented in this file.
 
+## [5.0.0](https://github.com/fratzinger/ucast/compare/@ucast/js@4.0.1...@ucast/js@5.0.0) (2026-04-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* `{ eq: null }` now behaves as in mongodb, so it matches all key values that equal to null and those which does not exist
+* supports ES2020+ only
+* **api:** ```
+* **interpreters:** removes `$` prefix from names of operator interpreters. Also renames `$in` to `within` because `in` is a reserved word in JS. This ensures we can safely import/re-export symbols from this package and other parsers/interpreters inside/from single file:
+
+### Features
+
+* adds possibility to provider custom isArray helper ([f4f39d5](https://github.com/fratzinger/ucast/commit/f4f39d5af05788e17b31225c6c98c8e68ff8b07d))
+* adds support for arrays in  eq: null  case ([667bad8](https://github.com/fratzinger/ucast/commit/667bad8ae424fb1a4f106989820982893ff3aba6))
+* **comparing:** adds `compare` option to interpreter ([576d128](https://github.com/fratzinger/ucast/commit/576d128a92d554e9e6a1508667a2f159908613c6))
+* **esm:** adds ESM support via dual loading in package.json for latest Node.js version ([c730f95](https://github.com/fratzinger/ucast/commit/c730f9598a4c62589c612403c0ac59ba4aa1600e)), closes [#10](https://github.com/fratzinger/ucast/issues/10)
+* merges @ucast/sql alpha into main stream ([#68](https://github.com/fratzinger/ucast/issues/68)) ([a058b3b](https://github.com/fratzinger/ucast/commit/a058b3ba6fcea17e5d02dbe76b9fe1c6b8950624))
+* **mongo:** stabilize mongo package ([7d77768](https://github.com/fratzinger/ucast/commit/7d7776874be3050026b53ee3b61c3361a89d1b21))
+* **mongo:** updates mongo parser to support ValueParsingInstruction ([b918c34](https://github.com/fratzinger/ucast/commit/b918c34224a5b60f3f1aa16197587f279b0e3e3a))
+
+
+### Bug Fixes
+
+* adds typings to ESM exports in package.json ([1ffb703](https://github.com/fratzinger/ucast/commit/1ffb7033a6d70ee4eb5f9d3178bcb4df37da835e))
+* adjusts eq: null handling to be the same as in mongodb ([#80](https://github.com/fratzinger/ucast/issues/80)) ([1e1c969](https://github.com/fratzinger/ucast/commit/1e1c9697a7d6598ee7a5ec72d931c50bb68d4667))
+* adjusts MongoQuery type to reflect mongodb capabilities and adjusts interpreters as well ([#81](https://github.com/fratzinger/ucast/issues/81)) ([131e893](https://github.com/fratzinger/ucast/commit/131e893d578af4a160709fc64ed031540784b663))
+* **api:** removes deprecated `equal` option for interpreter ([9b086b5](https://github.com/fratzinger/ucast/commit/9b086b5b5d81cd1cc4471de90945d6a44a1c35dd))
+* **docs:** removes `$` sign from README ([1a7e96b](https://github.com/fratzinger/ucast/commit/1a7e96b0e7bd29d7de5fe236863e472e28b9e119))
+* ensure "exists" js interpreter returns value depends on parent field existance for nested fields ([ec1c7d6](https://github.com/fratzinger/ucast/commit/ec1c7d6a82bee22dd5c26779f92ff2b5aaf2efb5))
+* ensure getValueByPath returns undefined on incomplete path traversal ([#65](https://github.com/fratzinger/ucast/issues/65)) ([6f4c2db](https://github.com/fratzinger/ucast/commit/6f4c2dbcba045e7ce7599c523eec6ec5529869a2))
+* **get:** ensure `get` returns flat array for deeply nested object of arrays of object arrays ([#13](https://github.com/fratzinger/ucast/issues/13)) ([2efeb91](https://github.com/fratzinger/ucast/commit/2efeb91213ee4d39deadb59962684392f94fc8cb))
+* **get:** ensures that `getObjectField` properly works with numeric fields in path ([ee501a2](https://github.com/fratzinger/ucast/commit/ee501a23262c2fc4913906ff09386f39883ab98e))
+* **interpreter:** ensure `regexp` correctly works with `null` & `undefined` values ([#14](https://github.com/fratzinger/ucast/issues/14)) ([061e5b0](https://github.com/fratzinger/ucast/commit/061e5b05474b90998920bb6735add6f676e18989))
+* **interpreters:** ensure field level interpreters work with array values as well ([32e38ef](https://github.com/fratzinger/ucast/commit/32e38efb9d4dea632f6c927243f6e6b96d57b69b)), closes [#7](https://github.com/fratzinger/ucast/issues/7)
+* **license:** changes mistakenly set MIT license to the correct one - Apache 2.0 ([197363c](https://github.com/fratzinger/ucast/commit/197363c321392c742d31b7e1e024d88c0499ce73))
+* marks packages as commonjs by default with a separate ESM entry ([a3f4896](https://github.com/fratzinger/ucast/commit/a3f48961a93b5951cb92d9954297cd12754d3ff1))
+* **operator:** ensure `exists` can check existance of array item ([3196ec7](https://github.com/fratzinger/ucast/commit/3196ec79e5ef190fe113656fc725cb47ab051c57))
+* **package:** fixes deps ranges ([c2de9c1](https://github.com/fratzinger/ucast/commit/c2de9c1b2d6ad85050f4eeb2635c6cb377200013))
+* remove type commonjs from package.json to improve webpack compat ([#28](https://github.com/fratzinger/ucast/issues/28)) ([6b1ad28](https://github.com/fratzinger/ucast/commit/6b1ad289d7b4f9945f08f29efd952069efd6c8c9))
+* the 2nd property get in eq and size interpreters should not raise exception ([9c6d49c](https://github.com/fratzinger/ucast/commit/9c6d49c1552363a9c1f6d3f34efc81b08c2edf82))
+* updates metadata in package.json ([2fa89f5](https://github.com/fratzinger/ucast/commit/2fa89f573eeb033c657b7c54b4640a856859f766))
+
+
+### Code Refactoring
+
+* drop ES5M and UMD builds ([#77](https://github.com/fratzinger/ucast/issues/77)) ([14b8279](https://github.com/fratzinger/ucast/commit/14b8279fa0dbd25d761ce7990afe692ae5bdbb95))
+* eq: null should not match primitive values ([f4c443c](https://github.com/fratzinger/ucast/commit/f4c443c6503aa59eea36996809e59531dc339f5b))
+* **interpreters:** removes `$` prefix from names of operator interpreters ([04ea7ac](https://github.com/fratzinger/ucast/commit/04ea7ac60a6aba4598b4fa27e6decb615e69a29d))
+* migrates to latest eslint/typescript ([#61](https://github.com/fratzinger/ucast/issues/61)) ([405bcca](https://github.com/fratzinger/ucast/commit/405bcca1dfc0cc4b8c3fe349e7110ce767633b47))
+
 ## [4.0.1](https://github.com/stalniy/ucast/compare/@ucast/js@4.0.0...@ucast/js@4.0.1) (2026-04-24)
 
 
